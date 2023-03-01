@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ModalContext } from "../../context/ModalContext";
+import { Modal } from "../Modal";
 
 export const TodoItem = ({
   id,
@@ -18,7 +19,9 @@ export const TodoItem = ({
     <tr
       onClick={(e) => {
         if (e.target.type === "checkbox") return;
-        setModalComponent(<h1>This is {index} element </h1>);
+        setModalComponent(
+          <Modal title={title} description={description} status={isChecked} />
+        );
       }}
     >
       <td>{index}.</td>

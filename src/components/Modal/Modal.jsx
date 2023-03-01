@@ -1,16 +1,12 @@
-import { createPortal } from "react-dom";
-import s from "./Modal.module.css";
-
-const modalRoot = document.querySelector("#modal-root");
-
-export const Modal = ({ children, closeModal }) => {
-  return createPortal(
-    <div
-      className={s.wrapper}
-      onClick={(e) => e.target === e.currentTarget && closeModal()}
-    >
-      {children}
-    </div>,
-    modalRoot
+export const Modal = ({ title, description, status }) => {
+  return (
+    <>
+      <h1>{title}</h1>
+      <h2>Description:</h2>
+      <p>{description}</p>
+      <p>
+        Status: <input type="checkbox" checked={status} readOnly />
+      </p>
+    </>
   );
 };

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Modal } from "../components/Modal";
+import { ModalWrapper } from "../components/Modal";
 
 export const ModalContext = createContext();
 
@@ -13,7 +13,9 @@ export const ModalProvider = ({ children }) => {
   return (
     <ModalContext.Provider value={setModalComponent}>
       {children}
-      {modalComonent && <Modal closeModal={closeModal}>{modalComonent}</Modal>}
+      {modalComonent && (
+        <ModalWrapper closeModal={closeModal}>{modalComonent}</ModalWrapper>
+      )}
     </ModalContext.Provider>
   );
 };
