@@ -42,7 +42,7 @@ export const Form = ({ addTodo }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value.trim() }));
   };
 
   const handleSubmit = (e) => {
