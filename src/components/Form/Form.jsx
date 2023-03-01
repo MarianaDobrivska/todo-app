@@ -23,13 +23,13 @@ export const Form = ({ addTodo }) => {
     if (formData.title.trim() === "") {
       setClassNameTitle({
         input: s.inputError,
-        label: s.title,
+        label: s.titleError,
       });
       return true;
     } else if (formData.description.trim() === "") {
       setClassNameDescription({
         input: s.inputError,
-        label: s.description,
+        label: s.descriptionError,
       });
       setClassNameTitle(initialClasses);
       return true;

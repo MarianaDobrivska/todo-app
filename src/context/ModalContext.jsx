@@ -4,7 +4,7 @@ import { ModalWrapper } from "../components/Modal";
 export const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
-  const [modalComonent, setModalComponent] = useState(null);
+  const [modalComponent, setModalComponent] = useState(null);
 
   const closeModal = () => {
     setModalComponent(null);
@@ -13,8 +13,8 @@ export const ModalProvider = ({ children }) => {
   return (
     <ModalContext.Provider value={setModalComponent}>
       {children}
-      {modalComonent && (
-        <ModalWrapper closeModal={closeModal}>{modalComonent}</ModalWrapper>
+      {modalComponent && (
+        <ModalWrapper closeModal={closeModal}>{modalComponent}</ModalWrapper>
       )}
     </ModalContext.Provider>
   );

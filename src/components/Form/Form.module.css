@@ -27,14 +27,14 @@
   font-size: 20px;
 }
 
-#title,
-#description {
+#titleError,
+#descriptionError {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-#title::after {
+#titleError::after {
   content: "This field is empty";
   position: absolute;
   top: 110px;
@@ -44,7 +44,7 @@
   font-weight: normal;
   line-height: 1.2;
 }
-#description::after {
+#descriptionError::after {
   content: "This field is empty";
   position: absolute;
   top: 110px;
