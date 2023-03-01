@@ -1,0 +1,13 @@
+.tableItem {
+  cursor: pointer;
+  transition: all 250ms linear;
+}
+
+.tableItem:hover {
+  background-color: rgba(111, 111, 111, 0.306);
+}
+
+.tableCell {
+  padding: 10px 20px;
+  background-color: rgba(138, 136, 133, 0.306);
+}

@@ -1,15 +1,16 @@
 import { TodoItem } from "../TodoItem";
+import s from "./TodoList.module.css";
 
 export const TodoList = ({ todo, updateTodoStatus }) => {
   return (
-    <table>
+    <table className={s.table}>
       <colgroup span="4"></colgroup>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>TITLE</th>
-          <th>DESCRIPTION</th>
-          <th>STATUS</th>
+          <th className={s.tableTitle}>ID</th>
+          <th className={s.tableTitle}>TITLE</th>
+          <th className={s.tableTitle}>DESCRIPTION</th>
+          <th className={s.tableTitle}>STATUS</th>
         </tr>
       </thead>
       <tbody>

@@ -7,8 +7,38 @@ const initialValues = {
   description: "",
 };
 
+const initialClasses = {
+  input: s.input,
+  label: s.label,
+};
+
 export const Form = ({ addTodo }) => {
   const [formData, setFormData] = useState({ ...initialValues });
+  const [classNameTitle, setClassNameTitle] = useState({ ...initialClasses });
+  const [classNameDescription, setClassNameDescription] = useState({
+    ...initialClasses,
+  });
+
+  const isInputValidationFailed = () => {
+    if (formData.title === "") {
+      setClassNameTitle({
+        input: s.inputError,
+        label: s.title,
+      });
+      return true;
+    } else if (formData.description === "") {
+      setClassNameDescription({
+        input: s.inputError,
+        label: s.description,
+      });
+      setClassNameTitle(initialClasses);
+      return true;
+    } else {
+      setClassNameDescription(initialClasses);
+      setClassNameTitle(initialClasses);
+      return false;
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,40 +47,55 @@ export const Form = ({ addTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formData:", formData);
+    if (isInputValidationFailed()) return;
     const todo = {
       ...formData,
       id: nanoid(),
       isChecked: false,
     };
-    console.log("ToDo:", todo);
     addTodo(todo);
     setFormData(initialValues);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">Title:</label>
-      <input
-        className={s.input}
-        type="text"
-        name="title"
-        id="title"
-        value={formData.title}
-        onChange={handleInputChange}
-        placeholder="Enter title"
-      />
-      <label htmlFor="title">Description:</label>
-      <input
-        className={s.input}
-        type="text"
-        name="description"
-        id="description"
-        value={formData.description}
-        onChange={handleInputChange}
-        placeholder="Enter description"
-      />
-      <button type="submit">Add todo</button>
+    <form className={s.form} onSubmit={handleSubmit}>
+      <label
+        htmlFor="title"
+        id={classNameTitle.label}
+        className={classNameTitle.label}
+      >
+        Title:
+        <input
+          className={classNameTitle.input}
+          type="text"
+          name="title"
+          id="title"
+          value={formData.title}
+          onChange={handleInputChange}
+          placeholder="Enter title"
+        />
+      </label>
+
+      <label
+        htmlFor="description"
+        id={classNameDescription.label}
+        className={classNameDescription.label}
+      >
+        Description:
+        <input
+          className={classNameDescription.input}
+          type="text"
+          name="description"
+          id="description"
+          value={formData.description}
+          onChange={handleInputChange}
+          placeholder="Enter description"
+        />
+      </label>
+
+      <button type="submit" className={s.button}>
+        Create
+      </button>
     </form>
   );
 };

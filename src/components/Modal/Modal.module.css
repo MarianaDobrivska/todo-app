@@ -10,3 +10,42 @@
   background-color: #00000050;
   overflow: hidden;
 }
+
+.modalBackground {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 550px;
+  height: auto;
+  padding: 40px;
+  transform: translate(-50%, -50%) scale(1);
+
+  background-color: aliceblue;
+  border-radius: 4px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.button {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  font-weight: 600;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.description {
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.status {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 24px;
+}

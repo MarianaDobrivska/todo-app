@@ -6,13 +6,16 @@ const modalRoot = document.querySelector("#modal-root");
 export const ModalWrapper = ({ children, closeModal }) => {
   return createPortal(
     <div className={s.wrapper}>
-      {children}
-      <button
-        type="button"
-        onClick={(e) => e.target === e.currentTarget && closeModal()}
-      >
-        Close
-      </button>
+      <div className={s.modalBackground}>
+        {children}
+        <button
+          type="button"
+          className={s.button}
+          onClick={(e) => e.target === e.currentTarget && closeModal()}
+        >
+          Close
+        </button>
+      </div>
     </div>,
     modalRoot
   );

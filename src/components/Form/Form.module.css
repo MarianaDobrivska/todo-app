@@ -1,4 +1,67 @@
-/* input:focus:invalid {
-  border: none;
-  outline: 1px solid red;
-} */
+.form {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  border: 1px solid black;
+  min-width: 300px;
+  height: 20px;
+  padding: 10px;
+  font-size: 20px;
+  position: relative;
+}
+
+.inputError {
+  border: 1px solid red;
+  min-width: 300px;
+  height: 20px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+#title,
+#description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#title::after {
+  content: "This field is empty";
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  font-size: 14px;
+  color: red;
+  font-weight: normal;
+  line-height: 1.2;
+}
+#description::after {
+  content: "This field is empty";
+  position: absolute;
+  top: 110px;
+  left: 425px;
+  font-size: 14px;
+  color: red;
+  font-weight: normal;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.button {
+  cursor: pointer;
+  width: 120px;
+  height: 44px;
+  align-self: last baseline;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
