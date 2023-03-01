@@ -20,13 +20,13 @@ export const Form = ({ addTodo }) => {
   });
 
   const isInputValidationFailed = () => {
-    if (formData.title === "") {
+    if (formData.title.trim() === "") {
       setClassNameTitle({
         input: s.inputError,
         label: s.title,
       });
       return true;
-    } else if (formData.description === "") {
+    } else if (formData.description.trim() === "") {
       setClassNameDescription({
         input: s.inputError,
         label: s.description,
@@ -42,7 +42,7 @@ export const Form = ({ addTodo }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value.trim() }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
