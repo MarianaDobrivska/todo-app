@@ -1,7 +1,8 @@
+import { memo } from "react";
 import { TodoItem } from "../TodoItem";
 import s from "./TodoList.module.css";
 
-export const TodoList = ({ todo, updateTodoStatus }) => {
+export const TodoList = memo(({ todo, updateTodoStatus, setModal }) => {
   return (
     <table className={s.table}>
       <colgroup span="4"></colgroup>
@@ -14,15 +15,17 @@ export const TodoList = ({ todo, updateTodoStatus }) => {
         </tr>
       </thead>
       <tbody>
-        {todo.map((el) => (
+        {Object.entries(todo).map(([id, element]) => (
           <TodoItem
-            key={el.id}
-            {...el}
-            index={todo.indexOf(el) + 1}
+            key={id}
+            id={id}
+            {...element}
+            index={Object.keys(todo).indexOf(id) + 1}
             updateTodoStatus={updateTodoStatus}
+            setModal={setModal}
           />
         ))}
       </tbody>
     </table>
   );
-};
+});

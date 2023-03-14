@@ -11,3 +11,23 @@
   padding: 10px 20px;
   background-color: rgba(138, 136, 133, 0.306);
 }
+
+.tableCellText {
+  padding: 10px 20px;
+  background-color: rgba(138, 136, 133, 0.306);
+  position: relative;
+}
+
+.tableCellText:before {
+  content: "&nbsp;";
+  visibility: hidden;
+}
+
+.tableCellText span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

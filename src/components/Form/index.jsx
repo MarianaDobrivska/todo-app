@@ -1,32 +1,27 @@
 import s from "./Form.module.css";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { nanoid } from "nanoid";
-
-const initialValues = {
-  title: "",
-  description: "",
-};
 
 const initialClasses = {
   input: s.input,
   label: s.label,
 };
 
-export const Form = ({ addTodo }) => {
-  const [formData, setFormData] = useState({ ...initialValues });
+export const Form = memo(({ addTodo }) => {
   const [classNameTitle, setClassNameTitle] = useState({ ...initialClasses });
   const [classNameDescription, setClassNameDescription] = useState({
     ...initialClasses,
   });
 
-  const isInputValidationFailed = () => {
-    if (formData.title.trim() === "") {
+  const isInputValidationFailed = (title, description) => {
+    if (title.trim() === "") {
       setClassNameTitle({
         input: s.inputError,
         label: s.titleError,
       });
+      setClassNameDescription(initialClasses);
       return true;
-    } else if (formData.description.trim() === "") {
+    } else if (description.trim() === "") {
       setClassNameDescription({
         input: s.inputError,
         label: s.descriptionError,
@@ -40,44 +35,38 @@ export const Form = ({ addTodo }) => {
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (isInputValidationFailed()) return;
+
+    const formData = new FormData(e.target);
+    const title = formData.get("title");
+    const description = formData.get("description");
+    if (isInputValidationFailed(title, description)) return;
+
     const todo = {
-      ...formData,
+      title,
+      description,
       id: nanoid(),
       isChecked: false,
     };
     addTodo(todo);
-    setFormData(initialValues);
+
+    e.target.reset();
   };
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <label
-        htmlFor="title"
-        id={classNameTitle.label}
-        className={classNameTitle.label}
-      >
+      <label id={classNameTitle.label} className={classNameTitle.label}>
         Title:
         <input
           className={classNameTitle.input}
           type="text"
           name="title"
-          id="title"
-          value={formData.title}
-          onChange={handleInputChange}
           placeholder="Enter title"
         />
       </label>
 
       <label
-        htmlFor="description"
         id={classNameDescription.label}
         className={classNameDescription.label}
       >
@@ -86,9 +75,6 @@ export const Form = ({ addTodo }) => {
           className={classNameDescription.input}
           type="text"
           name="description"
-          id="description"
-          value={formData.description}
-          onChange={handleInputChange}
           placeholder="Enter description"
         />
       </label>
@@ -98,4 +84,4 @@ export const Form = ({ addTodo }) => {
       </button>
     </form>
   );
-};
+});
