@@ -33,19 +33,3 @@
   height: 30px;
   font-weight: 600;
 }
-
-.title {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.description {
-  margin-bottom: 30px;
-  margin-top: 5px;
-}
-
-.status {
-  font-weight: 700;
-  margin-bottom: 20px;
-  font-size: 24px;
-}

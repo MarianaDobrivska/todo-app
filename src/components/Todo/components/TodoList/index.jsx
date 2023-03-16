@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { TodoItem } from "../TodoItem";
+import { TodoItem } from "./components/TodoItem";
 import s from "./TodoList.module.css";
 
 export const TodoList = memo(({ todo, updateTodoStatus, setModal }) => {

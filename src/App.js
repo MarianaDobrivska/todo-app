@@ -1,6 +1,11 @@
 import { Todo } from "./components/Todo";
+import { SharedLayout } from "./components/SharedLayout";
 
 function App() {
-  return <Todo />;
+  return (
+    <SharedLayout>
+      <Todo />
+    </SharedLayout>
+  );
 }
 export default App;
