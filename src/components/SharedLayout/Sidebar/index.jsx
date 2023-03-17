@@ -1,20 +1,30 @@
-export const Sidebar = () => {
+import s from "./styles.module.css";
+
+export const Sidebar = ({ pageChange, currentPage }) => {
+  const handleActivePage = (page) => {
+    if (currentPage === page) return `${s.active}`;
+    return `${s.link}`;
+  };
   return (
-    <aside
-      style={{
-        width: "200px",
-        height: "200px",
-        marginRight: "30px",
-        padding: "5px 20px",
-        backgroundColor: "lightslategray",
-      }}
-    >
+    <aside className={s.sidebar}>
       <nav>
-        <ul>
-          <li>nav item</li>
-          <li>nav item</li>
-          <li>nav item</li>
-          <li>nav item</li>
+        <ul className={s.sidebarList}>
+          <li
+            className={handleActivePage("todoPage")}
+            onClick={() => {
+              pageChange("todoPage");
+            }}
+          >
+            ToDos
+          </li>
+          <li
+            className={handleActivePage("cardsPage")}
+            onClick={() => {
+              pageChange("cardsPage");
+            }}
+          >
+            Cards
+          </li>
         </ul>
       </nav>
     </aside>

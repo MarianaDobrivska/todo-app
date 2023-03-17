@@ -1,14 +1,12 @@
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 
-export const SharedLayout = ({ children }) => {
+export const SharedLayout = ({ children, ...props }) => {
   return (
     <>
       <Header />
-      <div style={{ display: "flex" }}>
-        <Sidebar />
-        {children}
-      </div>
+      <Sidebar {...props} />
+      {children}
     </>
   );
 };

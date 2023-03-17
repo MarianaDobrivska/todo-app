@@ -11,20 +11,31 @@
 }
 
 .input {
-  border: 1px solid black;
-  min-width: 300px;
-  height: 20px;
-  padding: 10px;
-  font-size: 20px;
   position: relative;
+  min-width: 300px;
+  border: 2px solid hsla(0, 2%, 55%, 0.704);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 20px;
+  min-height: 20px;
+  outline: none;
+  padding: 10px;
+  transition: all 0.3s linear;
+}
+
+.input:focus {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.209);
+  scale: 1.01;
 }
 
 .inputError {
   border: 1px solid red;
   min-width: 300px;
-  height: 20px;
+  min-height: 20px;
   padding: 10px;
   font-size: 20px;
+  outline: 1px solid red;
+  border-radius: 4px;
 }
 
 #titleError,
@@ -37,8 +48,8 @@
 #titleError::after {
   content: "This field is empty";
   position: absolute;
-  top: 110px;
-  left: 40px;
+  top: 195px;
+  left: 290px;
   font-size: 14px;
   color: red;
   font-weight: normal;
@@ -47,8 +58,8 @@
 #descriptionError::after {
   content: "This field is empty";
   position: absolute;
-  top: 110px;
-  left: 425px;
+  top: 195px;
+  left: 675px;
   font-size: 14px;
   color: red;
   font-weight: normal;
@@ -57,11 +68,25 @@
 }
 
 .button {
-  cursor: pointer;
-  width: 120px;
-  height: 44px;
-  align-self: last baseline;
+  background-image: linear-gradient(90deg, #b2adb7df 0, #777d7b 51%, #bdbdbdd5);
+  background-size: 200% auto;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  box-shadow: 0 0 20px #eee;
+  color: #fff;
+  display: block;
   padding: 10px;
-  font-size: 20px;
   font-weight: 500;
+  font-size: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  width: 150px;
+  height: 51px;
+  align-self: last baseline;
+}
+.button:hover,
+.button:focus {
+  background-position: 100%;
+  text-decoration: none;
 }

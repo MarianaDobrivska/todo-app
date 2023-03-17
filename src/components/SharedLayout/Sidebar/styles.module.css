@@ -1,0 +1,49 @@
+.sidebar {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  /* margin-right: 30px; */
+  padding: 5px 20px;
+  background-color: rgba(119, 136, 153, 0.3);
+}
+
+.active {
+  cursor: pointer;
+  background-color: #ffffff75;
+  border-radius: 4px;
+  display: block;
+  font-size: 16px;
+  outline: none;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  transition: all 0.3s linear;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+  scale: 1.03;
+}
+
+.link {
+  cursor: pointer;
+  border-radius: 4px;
+  display: block;
+  font-size: 16px;
+  outline: none;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 500ms linear;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline rgba(119, 136, 153, 0.356);
+}
+
+.sidebarList {
+  transform: translateX(-10%);
+}

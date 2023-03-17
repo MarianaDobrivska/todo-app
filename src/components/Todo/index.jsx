@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Form } from "./components/Form";
 import { TodoList } from "./components/TodoList";
 import { ModalWrapper } from "../shared/Modal";
@@ -23,25 +23,35 @@ export const Todo = memo(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(todo));
   }, [todo]);
 
-  const updateTodoStatus = (id) => {
-    setTodo((prevTodos) => {
-      return {
-        ...prevTodos,
-        [id]: {
-          ...prevTodos[id],
-          isChecked: !prevTodos[id].isChecked,
-        },
-      };
-    });
+  const updateTodoStatus = useCallback(
+    (id) => {
+      setTodo((prevTodos) => {
+        return {
+          ...prevTodos,
+          [id]: {
+            ...prevTodos[id],
+            isChecked: !prevTodos[id].isChecked,
+          },
+        };
+      });
+    },
+    [todo]
+  );
+
+  const handleDelete = (todoId) => {
+    const newList = { ...todo };
+    delete newList[todoId];
+    setTodo(newList);
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: "250px" }}>
       <Form addTodo={addTodo}></Form>
       <TodoList
         todo={todo}
         updateTodoStatus={updateTodoStatus}
         setModal={setModalData}
+        handleDelete={handleDelete}
       />
       {modalData && (
         <ModalWrapper setModal={setModalData}>
