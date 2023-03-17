@@ -23,20 +23,17 @@ export const Todo = memo(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(todo));
   }, [todo]);
 
-  const updateTodoStatus = useCallback(
-    (id) => {
-      setTodo((prevTodos) => {
-        return {
-          ...prevTodos,
-          [id]: {
-            ...prevTodos[id],
-            isChecked: !prevTodos[id].isChecked,
-          },
-        };
-      });
-    },
-    [todo]
-  );
+  const updateTodoStatus = useCallback((id) => {
+    setTodo((prevTodos) => {
+      return {
+        ...prevTodos,
+        [id]: {
+          ...prevTodos[id],
+          isChecked: !prevTodos[id].isChecked,
+        },
+      };
+    });
+  }, []);
 
   const handleDelete = (todoId) => {
     const newList = { ...todo };
