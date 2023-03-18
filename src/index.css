@@ -28,3 +28,12 @@ button {
   padding: 0;
   cursor: pointer;
 }
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}

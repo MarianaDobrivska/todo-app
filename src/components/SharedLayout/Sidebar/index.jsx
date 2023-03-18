@@ -1,29 +1,41 @@
+import { NavLink, useLocation } from "react-router-dom";
+import clsx from "clsx";
 import s from "./styles.module.css";
 
-export const Sidebar = ({ pageChange, currentPage }) => {
-  const handleActivePage = (page) => {
-    if (currentPage === page) return `${s.active}`;
-    return `${s.link}`;
-  };
+const getNavLinkClassName = ({ isActive }) =>
+  clsx(s.link, isActive && s.active);
+
+export const Sidebar = () => {
+  const location = useLocation();
+
   return (
     <aside className={s.sidebar}>
       <nav>
         <ul className={s.sidebarList}>
-          <li
-            className={handleActivePage("todoPage")}
-            onClick={() => {
-              pageChange("todoPage");
-            }}
-          >
-            ToDos
+          <li>
+            <NavLink
+              to="/todos"
+              className={
+                location.pathname === "/" ? s.active : getNavLinkClassName
+              }
+            >
+              Todos
+            </NavLink>
           </li>
-          <li
-            className={handleActivePage("cardsPage")}
-            onClick={() => {
-              pageChange("cardsPage");
-            }}
-          >
-            Cards
+          <li>
+            <NavLink to="/cards" className={getNavLinkClassName}>
+              Cards
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/done" className={getNavLinkClassName}>
+              Done
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/trash" className={getNavLinkClassName}>
+              Trash
+            </NavLink>
           </li>
         </ul>
       </nav>

@@ -1,12 +1,13 @@
+import { Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
 
-export const SharedLayout = ({ children, ...props }) => {
+export const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Sidebar {...props} />
-      {children}
+      <Sidebar />
+      <Outlet />
     </>
   );
 };

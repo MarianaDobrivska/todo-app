@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+  overflow-wrap: break-word;
+}
+
+.description {
+  margin-bottom: 30px;
+  margin-top: 5px;
+  overflow-wrap: break-word;
+}
+
+.status {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
