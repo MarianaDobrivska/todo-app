@@ -3,13 +3,7 @@ import s from "./Modal.module.css";
 
 const modalRoot = document.querySelector("#modal-root");
 
-export const ModalWrapper = ({ children, setModal }) => {
-  // const { description, title, isChecked } = data;
-
-  const closeModal = () => {
-    setModal(null);
-  };
-
+export const ModalWrapper = ({ children, close }) => {
   return createPortal(
     <div className={s.wrapper}>
       <div className={s.modalBackground}>
@@ -17,7 +11,7 @@ export const ModalWrapper = ({ children, setModal }) => {
         <button
           type="button"
           className={s.button}
-          onClick={(e) => e.target === e.currentTarget && closeModal()}
+          onClick={(e) => e.target === e.currentTarget && close()}
         >
           Close
         </button>

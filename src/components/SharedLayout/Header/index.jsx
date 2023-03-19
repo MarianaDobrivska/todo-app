@@ -1,11 +1,12 @@
+import { useLocation } from "react-router-dom";
 import s from "./styles.module.css";
 import { HeaderIcon } from "./components/HeaderIcon";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useModal } from "../../../hooks";
+import { Modal } from "./components/ProjectModal";
 
 export const Header = () => {
-  const [modal, setModal] = useState();
   const location = useLocation();
+  const { isOpen, open, close } = useModal();
 
   const renderSecondIcon = (path) => {
     switch (path) {
@@ -27,12 +28,13 @@ export const Header = () => {
 
   return (
     <header className={s.header}>
-      <button className={s.headerBtn}>
+      <button onClick={open} className={s.headerBtn}>
         <HeaderIcon name={"Add"} />
       </button>
       <button className={s.headerBtn}>
         {renderSecondIcon(location.pathname)}
       </button>
+      {isOpen && <Modal close={close} />}
     </header>
   );
 };

@@ -1,16 +1,33 @@
 import s from "./Modal.module.css";
+import TodoStore from "../../../../../store/todo";
 
-export const Modal = ({ data }) => {
-  const { description, title, isChecked } = data;
+export const Modal = ({ close }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) return;
+    const formData = new FormData(e.target);
+    const projectName = formData.get("project");
+    TodoStore.addProject(projectName);
+    close();
+    e.target.reset();
+  };
 
   return (
-    <>
-      <h1 className={s.title}>{title}</h1>
-      <h2>Description:</h2>
-      <p className={s.description}>{description}</p>
-      <p className={s.status}>
-        Status: <input type="checkbox" checked={isChecked} readOnly />
-      </p>
-    </>
+    <div className={s.wrapper}>
+      <div className={s.modalBackground}>
+        <form onSubmit={handleSubmit} className={s.form}>
+          <h1 className={s.title}>Add Project</h1>
+          <input
+            className={s.input}
+            type="text"
+            name="project"
+            placeholder="Enter project name"
+          />
+          <button type="submit" className={s.button}>
+            Add
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };

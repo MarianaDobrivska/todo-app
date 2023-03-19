@@ -1,0 +1,9 @@
+.wrapper {
+  margin-left: 250px;
+}
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

@@ -1,17 +1,85 @@
+.wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000050;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.modalBackground {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 450px;
+  height: auto;
+  padding: 40px;
+  transform: translate(-50%, -50%) scale(1);
+
+  background-color: aliceblue;
+  border-radius: 4px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
 .title {
   text-align: center;
-  margin-bottom: 25px;
   overflow-wrap: break-word;
 }
-
-.description {
-  margin-bottom: 30px;
-  margin-top: 5px;
-  overflow-wrap: break-word;
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-.status {
-  font-weight: 700;
-  margin-bottom: 20px;
-  font-size: 24px;
+.input {
+  position: relative;
+  min-width: 300px;
+  border: 2px solid hsla(0, 2%, 55%, 0.704);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 20px;
+  min-height: 20px;
+  outline: none;
+  padding: 10px;
+  transition: all 0.3s linear;
+}
+
+.input:focus {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.209);
+  scale: 1.01;
+}
+
+.button {
+  display: block;
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+
+  background-color: rgba(74, 83, 91, 0.823);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  box-shadow: 0 0 20px #eee;
+  color: #fff;
+
+  font-size: 19px;
+  text-align: center;
+  text-transform: uppercase;
+
+  transition: all 0.5s linear;
+}
+.button:hover,
+.button:focus {
+  background-color: rgba(193, 194, 194, 0.823);
+  color: rgb(53, 55, 57);
+  border: 1px solid rgb(53, 55, 57);
 }

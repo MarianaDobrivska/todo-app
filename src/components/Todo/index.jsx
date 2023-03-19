@@ -1,57 +1,34 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 import { Form } from "./components/Form";
 import { TodoList } from "./components/TodoList";
 import { ModalWrapper } from "../shared/Modal";
 import { Modal } from "./components/Modal";
+import { useModal } from "../../hooks";
+import TodoStore from "../../store/todo";
+import s from "./styles.module.css";
 
-const LS_KEY = "todo-items";
+// const LS_KEY = "todo-items";
 
-export const Todo = memo(() => {
-  const [todo, setTodo] = useState(
-    () => JSON.parse(localStorage.getItem(LS_KEY)) ?? {}
-  );
-  const [modalData, setModalData] = useState(null);
-
-  const addTodo = ({ id, isChecked, title, description }) => {
-    setTodo((prevTodo) => ({
-      [id]: { title, description, isChecked },
-      ...prevTodo,
-    }));
-  };
-
-  useEffect(() => {
-    localStorage.setItem(LS_KEY, JSON.stringify(todo));
-  }, [todo]);
-
-  const updateTodoStatus = useCallback((id) => {
-    setTodo((prevTodos) => {
-      return {
-        ...prevTodos,
-        [id]: {
-          ...prevTodos[id],
-          isChecked: !prevTodos[id].isChecked,
-        },
-      };
-    });
-  }, []);
-
-  const handleDelete = (todoId) => {
-    const newList = { ...todo };
-    delete newList[todoId];
-    setTodo(newList);
-  };
+export const Todo = observer(() => {
+  const { isOpen, close, open, modalData, handleModalData } = useModal();
+  const todos = Object.keys(TodoStore.todos);
+  // useEffect(() => {
+  //   localStorage.setItem(LS_KEY, JSON.stringify(TodoStore.todos));
+  // }, []);
 
   return (
-    <div style={{ marginLeft: "250px" }}>
-      <Form addTodo={addTodo}></Form>
-      <TodoList
-        todo={todo}
-        updateTodoStatus={updateTodoStatus}
-        setModal={setModalData}
-        handleDelete={handleDelete}
-      />
-      {modalData && (
-        <ModalWrapper setModal={setModalData}>
+    <div className={s.wrapper}>
+      <Form />
+      <ul className={s.todoList}>
+        {todos.map((id) => (
+          <li key={id}>
+            <h3>{id}</h3>
+            <TodoList setModalData={handleModalData} open={open} project={id} />
+          </li>
+        ))}
+      </ul>
+      {isOpen && (
+        <ModalWrapper close={close}>
           <Modal data={modalData} />
         </ModalWrapper>
       )}

@@ -1,13 +1,17 @@
 import s from "./Form.module.css";
 import { memo, useState } from "react";
 import { nanoid } from "nanoid";
+import TodoStore from "../../../../store/todo";
+import { useNotify } from "../../../../hooks";
 
 const initialClasses = {
   input: s.input,
   label: s.label,
 };
 
-export const Form = memo(({ addTodo }) => {
+export const Form = memo(() => {
+  const { isNotificationOpen, Notification, setNotify } = useNotify();
+
   const [classNameTitle, setClassNameTitle] = useState({ ...initialClasses });
   const [classNameDescription, setClassNameDescription] = useState({
     ...initialClasses,
@@ -49,8 +53,8 @@ export const Form = memo(({ addTodo }) => {
       id: nanoid(),
       isChecked: false,
     };
-    addTodo(todo);
-
+    TodoStore.addTodo(todo);
+    setNotify({ status: "Info", text: "Todo added successfully" });
     e.target.reset();
   };
 
@@ -82,6 +86,7 @@ export const Form = memo(({ addTodo }) => {
       <button type="submit" className={s.button}>
         Create
       </button>
+      {isNotificationOpen && <Notification />}
     </form>
   );
 });
