@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Todo } from "./components/Todo";
 import { SharedLayout } from "./components/SharedLayout";
+import { Done } from "./components/Done";
 
 function App() {
   return (
@@ -12,10 +13,7 @@ function App() {
           path="/cards"
           element={<h1 style={{ marginLeft: "250px" }}>Cards</h1>}
         />
-        <Route
-          path="/done"
-          element={<h1 style={{ marginLeft: "250px" }}>Done</h1>}
-        />
+        <Route path="/done" element={<Done />} />
         <Route
           path="/trash"
           element={<h1 style={{ marginLeft: "250px" }}>Trash</h1>}

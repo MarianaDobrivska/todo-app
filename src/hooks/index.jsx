@@ -55,7 +55,5 @@ export const useNotify = () => {
     }, 3000);
   };
 
-  //   const handleNotifyData = (data) => setNotification(data);
-
   return { setNotify, isNotificationOpen, Notification };
 };

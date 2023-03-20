@@ -26,7 +26,10 @@ export const TodoItem = observer(
     };
 
     return (
-      <tr className={s.tableItem} onClick={(e) => openModal(e)}>
+      <tr
+        className={isChecked ? s.disabled : s.tableItem}
+        onClick={(e) => openModal(e)}
+      >
         <td className={s.tableCell}>{index}.</td>
         <td className={s.tableCellText}>
           <span>{title}</span>

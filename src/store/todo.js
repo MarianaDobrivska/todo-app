@@ -19,7 +19,7 @@ class Store {
     this.todos = {
       ...this.todos,
       [projectName]: {
-        [id]: { title, description, isChecked },
+        [id]: { title, description, isChecked, id },
         ...this.todos[projectName],
       },
     };
@@ -54,6 +54,28 @@ class Store {
       },
     };
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
+  }
+
+  get getDoneTodos() {
+    const projects = Object.keys(this.todos);
+
+    const todosByProject = projects.map((project) =>
+      Object.values(this.todos[project])
+    );
+
+    const doneTodos = todosByProject
+      .flat()
+      .filter((todo) => todo.isChecked === true);
+    return { todos: [...doneTodos], countOfCompleted: doneTodos.length };
+  }
+
+  get allTodosCount() {
+    const projects = Object.keys(this.todos);
+
+    const todosByProject = projects.map((project) =>
+      Object.values(this.todos[project])
+    );
+    return todosByProject.flat().length;
   }
 }
 

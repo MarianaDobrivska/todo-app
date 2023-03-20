@@ -7,14 +7,9 @@ import { useModal } from "../../hooks";
 import TodoStore from "../../store/todo";
 import s from "./styles.module.css";
 
-// const LS_KEY = "todo-items";
-
 export const Todo = observer(() => {
   const { isOpen, close, open, modalData, handleModalData } = useModal();
   const todos = Object.keys(TodoStore.todos);
-  // useEffect(() => {
-  //   localStorage.setItem(LS_KEY, JSON.stringify(TodoStore.todos));
-  // }, []);
 
   return (
     <div className={s.wrapper}>

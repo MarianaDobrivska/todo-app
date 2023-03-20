@@ -10,6 +10,9 @@
   background-color: #00000050;
   overflow: hidden;
   z-index: 2;
+  opacity: 0;
+  animation: appearing 1s linear;
+  animation-fill-mode: forwards;
 }
 
 .modalBackground {
@@ -33,4 +36,13 @@
   width: 100px;
   height: 30px;
   font-weight: 600;
+}
+
+@keyframes appearing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
