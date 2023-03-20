@@ -11,6 +11,7 @@ export const Done = observer(() => {
   useEffect(() => {
     if (doneCount === 0) return;
     open();
+    // eslint-disable-next-line
   }, [doneCount]);
 
   return (
