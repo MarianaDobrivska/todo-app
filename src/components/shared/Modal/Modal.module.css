@@ -33,9 +33,29 @@
 
 .button {
   cursor: pointer;
-  width: 100px;
+  width: 30px;
   height: 30px;
   font-weight: 600;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  fill: rgba(49, 34, 34, 0.931);
+  transition: fill 250ms linear;
+}
+
+.icon:hover {
+  width: 30px;
+  height: 30px;
+  fill: rgba(116, 71, 71, 0.931);
 }
 
 @keyframes appearing {
