@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useModal } from "../../hooks";
 import TodoStore from "../../store/todo";
 import { Modal } from "./components/Modal";
+import Draggable from "react-draggable";
 
 export const Done = observer(() => {
   const { close, isOpen, open } = useModal();
@@ -15,9 +16,13 @@ export const Done = observer(() => {
   }, [doneCount]);
 
   return (
-    <div style={{ marginLeft: "250px" }}>
+    <>
       {isOpen && <Modal close={close} />}
-      {!doneCount && <h2>There are no ready tasks yet</h2>}
-    </div>
+      {!doneCount && (
+        <Draggable>
+          <h2>There are no ready tasks yet</h2>
+        </Draggable>
+      )}
+    </>
   );
 });

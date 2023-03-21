@@ -7,7 +7,9 @@ export const SharedLayout = () => {
     <>
       <Header />
       <Sidebar />
-      <Outlet />
+      <div style={{ marginLeft: "250px" }}>
+        <Outlet />
+      </div>
     </>
   );
 };
