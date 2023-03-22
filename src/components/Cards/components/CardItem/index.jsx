@@ -1,8 +1,7 @@
 import { useDrag } from "react-dnd";
 
 export const CardItem = ({ title, id, style }) => {
-  // eslint-disable-next-line
-  const [{ isDragging }, dragRef] = useDrag({
+  const [, dragRef] = useDrag({
     type: "card",
     item: { title, id },
     collect: (monitor) => ({
