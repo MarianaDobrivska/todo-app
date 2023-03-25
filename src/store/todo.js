@@ -1,9 +1,11 @@
 import { makeAutoObservable } from "mobx";
 
 const LS_KEY = "todo-items";
+const TRASH_KEY = "trash";
 
 class Store {
   todos = JSON.parse(localStorage.getItem(LS_KEY)) ?? {};
+  deletedTodos = JSON.parse(localStorage.getItem(TRASH_KEY)) ?? [];
 
   constructor() {
     makeAutoObservable(this, {}, { deep: true });
@@ -19,11 +21,16 @@ class Store {
     this.todos = {
       ...this.todos,
       [projectName]: {
-        [id]: { title, description, isChecked, id },
+        [id]: { title, description, isChecked, id, project: projectName },
         ...this.todos[projectName],
       },
     };
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
+  }
+
+  addToTrash(todo) {
+    this.deletedTodos.push(todo);
+    localStorage.setItem(TRASH_KEY, JSON.stringify(this.deletedTodos));
   }
 
   addProject(projectName) {

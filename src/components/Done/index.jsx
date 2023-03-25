@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useModal } from "../../hooks";
 import TodoStore from "../../store/todo";
 import { Modal } from "./components/Modal";
+import { DoneList } from "./components/DoneList";
 import Draggable from "react-draggable";
 
 export const Done = observer(() => {
@@ -23,6 +24,7 @@ export const Done = observer(() => {
           <h2>There are no ready tasks yet</h2>
         </Draggable>
       )}
+      {!isOpen && <DoneList />}
     </>
   );
 });

@@ -3,6 +3,7 @@ import { Todo } from "./components/Todo";
 import { SharedLayout } from "./components/SharedLayout";
 import { Done } from "./components/Done";
 import { Cards } from "./components/Cards";
+import { Trash } from "./components/Trash";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route path="/todos" element={<Todo />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/done" element={<Done />} />
-        <Route path="/trash" element={<h1>Trash</h1>} />
+        <Route path="/trash" element={<Trash />} />
       </Route>
     </Routes>
   );

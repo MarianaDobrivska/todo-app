@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import s from "./TodoItem.module.css";
 import { BsFillPlusSquareFill, BsFillXSquareFill } from "react-icons/bs";
 import TodoStore from "../../../../../../store/todo";
+import { useDrag } from "react-dnd";
 
 export const TodoItem = observer(
   ({
@@ -13,6 +14,7 @@ export const TodoItem = observer(
     setModalData,
     open,
     project,
+    openTrash,
   }) => {
     const openModal = (e) => {
       if (
@@ -25,10 +27,27 @@ export const TodoItem = observer(
       setModalData({ title, description, isChecked });
     };
 
+    const [, dragRef] = useDrag({
+      type: "todo",
+      item: { title, description, id, project, isChecked },
+      isDragging: () => {
+        openTrash(true);
+      },
+      end: () => {
+        setTimeout(() => {
+          openTrash(false);
+        }, 1500);
+      },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+    });
+
     return (
       <tr
         className={isChecked ? s.disabled : s.tableItem}
         onClick={(e) => openModal(e)}
+        ref={dragRef}
       >
         <td className={s.tableCell}>{index}.</td>
         <td className={s.tableCellText}>
