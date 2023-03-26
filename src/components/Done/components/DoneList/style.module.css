@@ -1,20 +1,47 @@
+.projectWrapper {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  /* padding: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  backdrop-filter: blur(30px);
+  border-radius: 15px; */
+}
+
+.projectTitle {
+  margin-bottom: 10px;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 20px;
+  color: rgb(239, 235, 235);
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  backdrop-filter: blur(30px);
+  border-radius: 15px;
 }
 
 .listItem {
   width: 150px;
 
-  padding: 35px;
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
-  background-color: rgba(218, 218, 218, 0.45);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  /* border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px; */
+  /* background-color: rgba(218, 218, 218, 0.187); */
+  /* box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25); */
 
   backdrop-filter: blur(15px);
+  /* new */
+  background-color: rgba(0, 0, 0, 0.302);
+  padding: 20px;
+  border-radius: 20px;
+  /* backdrop-filter: blur(20px); */
 }
 
 .listItemTitle,

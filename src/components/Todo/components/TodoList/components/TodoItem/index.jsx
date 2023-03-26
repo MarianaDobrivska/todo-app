@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
 import s from "./TodoItem.module.css";
-import { BsFillPlusSquareFill, BsFillXSquareFill } from "react-icons/bs";
+import { BsFillXSquareFill } from "react-icons/bs";
 import TodoStore from "../../../../../../store/todo";
 import { useDrag } from "react-dnd";
+import { useEffect } from "react";
 
 export const TodoItem = observer(
   ({
@@ -43,6 +44,25 @@ export const TodoItem = observer(
       }),
     });
 
+    useEffect(() => {
+      if (isChecked) {
+        TodoStore.handleDoneTodos(
+          {
+            id,
+            title,
+            description,
+            isChecked,
+            project,
+          },
+          project
+        );
+        setTimeout(() => {
+          TodoStore.deleteTodo(id, project);
+        }, 1000);
+      }
+      // eslint-disable-next-line
+    }, [isChecked]);
+
     return (
       <tr
         className={isChecked ? s.disabled : s.tableItem}
@@ -67,11 +87,11 @@ export const TodoItem = observer(
             }}
           />
         </td>
-        <td className={s.tableCell}>
+        {/* <td className={s.tableCell}>
           <button type="button">
             <BsFillPlusSquareFill className={s.tableIcon} />
           </button>
-        </td>
+        </td> */}
         <td className={s.tableCell}>
           <button
             type="button"

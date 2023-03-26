@@ -19,7 +19,7 @@ export const TodoList = observer(
             <th className={s.tableTitle}>TITLE</th>
             <th className={s.tableTitle}>DESCRIPTION</th>
             <th className={s.tableTitle}>STATUS</th>
-            <th className={s.tableTitle}>TIMETRACKER</th>
+            {/* <th className={s.tableTitle}>TIMETRACKER</th> */}
             <th className={s.tableTitle}>DELETE</th>
           </tr>
         </thead>

@@ -3,7 +3,7 @@ import s from "./style.module.css";
 
 export const ProgressBar = () => {
   const doneCount = TodoStore.getDoneTodos.countOfCompleted;
-  const totalCount = TodoStore.allTodosCount;
+  const totalCount = TodoStore.allTodosCount + doneCount;
   const percentageComplete = (doneCount / totalCount) * 100;
   return (
     <div className={s.wrapper}>
