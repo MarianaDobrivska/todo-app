@@ -17,7 +17,7 @@ export const Done = observer(() => {
   }, [doneCount]);
 
   return (
-    <>
+    <div style={{ paddingRight: "30px" }}>
       {isOpen && <Modal close={close} />}
       {!doneCount && (
         <Draggable>
@@ -25,6 +25,6 @@ export const Done = observer(() => {
         </Draggable>
       )}
       {!isOpen && <DoneList />}
-    </>
+    </div>
   );
 });

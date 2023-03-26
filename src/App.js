@@ -7,15 +7,17 @@ import { Trash } from "./components/Trash";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Todo />} />
-        <Route path="/todos" element={<Todo />} />
-        <Route path="/cards" element={<Cards />} />
-        <Route path="/done" element={<Done />} />
-        <Route path="/trash" element={<Trash />} />
-      </Route>
-    </Routes>
+    <div className="appContainer">
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Todo />} />
+          <Route path="/todos" element={<Todo />} />
+          <Route path="/cards" element={<Cards />} />
+          <Route path="/done" element={<Done />} />
+          <Route path="/trash" element={<Trash />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
 export default App;

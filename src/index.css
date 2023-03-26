@@ -2,7 +2,9 @@
 
 body {
   margin: 0;
-  padding: 120px 40px 40px 40px;
+  /* padding: 120px 40px 40px 40px; */
+  padding: 50px;
+  padding-bottom: 100px;
   background-color: rgba(240, 238, 234, 0.65);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -13,11 +15,45 @@ body {
   background: url("https://www.iphonehacks.com/wp-content/uploads/2020/08/recreate-macos-big-sur.jpeg");
   background-size: cover;
   background-attachment: fixed;
+  height: 90vh;
+}
+
+.appContainer {
+  position: relative;
+
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  backdrop-filter: blur(30px);
+  border-radius: 15px;
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.appContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.appContainer::-webkit-scrollbar-track {
+  background: rgba(206, 172, 199, 0.523);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.appContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.698);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid rgba(230, 6, 197, 0.3);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1,

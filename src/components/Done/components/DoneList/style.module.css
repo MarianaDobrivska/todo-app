@@ -1,3 +1,12 @@
+.title {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 3px #2a2c2e;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .projectWrapper {
   color: white;
   display: flex;
@@ -14,6 +23,7 @@
 
 .projectTitle {
   margin-bottom: 10px;
+  position: relative;
 }
 
 .list {

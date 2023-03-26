@@ -1,5 +1,6 @@
 .tableItem {
   transition: all 250ms linear;
+  color: rgba(255, 255, 255, 0.695);
 }
 
 .tableItem:hover {
@@ -14,7 +15,7 @@
 
 .tableCell {
   padding: 10px 20px;
-  background-color: rgba(138, 136, 133, 0.306);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .tableCell input {
@@ -23,7 +24,7 @@
 
 .tableCellText {
   padding: 10px 20px;
-  background-color: rgba(138, 136, 133, 0.306);
+  background-color: rgba(0, 0, 0, 0.2);
   position: relative;
 }
 

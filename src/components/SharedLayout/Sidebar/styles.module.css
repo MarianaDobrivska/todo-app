@@ -4,9 +4,10 @@
   left: 0;
   width: 200px;
   height: 100%;
+  color: white;
   /* margin-right: 30px; */
-  padding: 5px 20px;
-  background-color: rgba(119, 136, 153, 0.3);
+  /* padding: 5px 20px; */
+  /* background-color: rgba(5, 7, 8, 0.169); */
 }
 
 .active {
@@ -24,6 +25,9 @@
   transition: all 0.3s linear;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
   scale: 1.03;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(20px);
 }
 
 .link {
