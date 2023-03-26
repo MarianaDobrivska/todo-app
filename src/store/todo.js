@@ -77,17 +77,16 @@ class Store {
     localStorage.setItem(DONE_KEY, JSON.stringify(this.doneTodos));
   }
 
-  get getDoneTodos() {
+  get countOfCompleted() {
     const projects = Object.keys(this.doneTodos);
 
     const todosByProject = projects.map((project) =>
       Object.values(this.doneTodos[project])
     );
 
-    const doneTodos = todosByProject
-      .flat()
-      .filter((todo) => todo.isChecked === true);
-    return { todos: [...doneTodos], countOfCompleted: doneTodos.length };
+    const doneTodos = todosByProject.flat().length;
+
+    return doneTodos;
   }
 
   get allTodosCount() {

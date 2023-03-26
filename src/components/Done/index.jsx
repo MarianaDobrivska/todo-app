@@ -8,7 +8,7 @@ import Draggable from "react-draggable";
 
 export const Done = observer(() => {
   const { close, isOpen, open } = useModal();
-  const doneCount = TodoStore.getDoneTodos.countOfCompleted;
+  const doneCount = TodoStore.countOfCompleted;
 
   useEffect(() => {
     if (doneCount === 0) return;
@@ -21,10 +21,10 @@ export const Done = observer(() => {
       {isOpen && <Modal close={close} />}
       {!doneCount && (
         <Draggable>
-          <h2>There are no ready tasks yet</h2>
+          <h2 style={{ marginTop: "20px" }}>There are no ready tasks yet 😢</h2>
         </Draggable>
       )}
-      {!isOpen && <DoneList />}
+      {doneCount > 0 && !isOpen && <DoneList />}
     </div>
   );
 });

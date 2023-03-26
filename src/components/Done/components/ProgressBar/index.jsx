@@ -2,7 +2,7 @@ import TodoStore from "../../../../store/todo";
 import s from "./style.module.css";
 
 export const ProgressBar = () => {
-  const doneCount = TodoStore.getDoneTodos.countOfCompleted;
+  const doneCount = TodoStore.countOfCompleted;
   const totalCount = TodoStore.allTodosCount + doneCount;
   const percentageComplete = (doneCount / totalCount) * 100;
   return (

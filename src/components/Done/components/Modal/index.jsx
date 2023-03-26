@@ -4,7 +4,7 @@ import TodoStore from "../../../../store/todo";
 import s from "./style.module.css";
 
 export const Modal = ({ close }) => {
-  const doneCount = TodoStore.getDoneTodos.countOfCompleted;
+  const doneCount = TodoStore.countOfCompleted;
   const totalCount = TodoStore.allTodosCount + doneCount;
   const remaining = totalCount - doneCount;
   return (
