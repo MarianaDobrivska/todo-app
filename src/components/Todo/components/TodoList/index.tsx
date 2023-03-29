@@ -42,7 +42,7 @@ export const TodoList = observer(
               index={setIndex(el.id, project)}
               setModalData={setModalData}
               open={open}
-              project={project}
+              projectName={project}
               openTrash={openTrash}
             />
           ))}

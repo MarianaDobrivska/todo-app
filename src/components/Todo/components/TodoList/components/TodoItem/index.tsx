@@ -14,7 +14,7 @@ type todoItemProps = {
   isChecked: boolean;
   setModalData: ({ title, description, isChecked }) => void;
   open: () => void;
-  project: string;
+  projectName: string;
   openTrash: (arg: boolean) => void;
 };
 
@@ -27,7 +27,7 @@ export const TodoItem = observer(
     isChecked,
     setModalData,
     open,
-    project,
+    projectName,
     openTrash,
   }: todoItemProps) => {
     const openModal = (e) => {
@@ -43,7 +43,7 @@ export const TodoItem = observer(
 
     const [, dragRef] = useDrag({
       type: "todo",
-      item: { title, description, id, project, isChecked },
+      item: { title, description, id, projectName, isChecked },
       isDragging: () => {
         openTrash(true);
         return true;
@@ -66,12 +66,12 @@ export const TodoItem = observer(
             title,
             description,
             isChecked,
-            project,
+            projectName,
           },
-          project
+          projectName
         );
         setTimeout(() => {
-          TodoStore.deleteTodo(id, project);
+          TodoStore.deleteTodo(id, projectName);
         }, 1000);
       }
       // eslint-disable-next-line
@@ -97,19 +97,15 @@ export const TodoItem = observer(
             name="status"
             checked={isChecked}
             onChange={() => {
-              TodoStore.updateTodoStatus(id, project);
+              TodoStore.updateTodoStatus(id, projectName);
             }}
           />
         </td>
-        {/* <td className={s.tableCell}>
-          <button type="button">
-            <BsFillPlusSquareFill className={s.tableIcon} />
-          </button>
-        </td> */}
+
         <td className={s.tableCell}>
           <button
             type="button"
-            onClick={() => TodoStore.deleteTodo(id, project)}
+            onClick={() => TodoStore.deleteTodo(id, projectName)}
           >
             <BsFillXSquareFill className={s.tableIcon} />
           </button>
