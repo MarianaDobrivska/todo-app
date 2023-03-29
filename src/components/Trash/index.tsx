@@ -1,8 +1,10 @@
+import React from "react";
 import TodoStore from "../../store/todo";
 import s from "./style.module.css";
+import { ITodo } from "../../types/interface";
 
 export const Trash = () => {
-  const todos = TodoStore.deletedTodos;
+  const todos: ITodo[] = TodoStore.deletedTodos;
 
   return (
     <div className={s.wrapper}>

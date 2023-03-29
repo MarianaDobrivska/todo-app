@@ -1,7 +1,14 @@
+import React from "react";
 import s from "./Modal.module.css";
 
+type modalProps = {
+  description: string;
+  title: string;
+  isChecked: boolean;
+};
+
 export const Modal = ({ data }) => {
-  const { description, title, isChecked } = data;
+  const { description, title, isChecked }: modalProps = data;
 
   return (
     <>

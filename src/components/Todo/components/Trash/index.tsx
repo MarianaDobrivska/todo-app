@@ -1,15 +1,24 @@
+import React from "react";
 import { useDrop } from "react-dnd";
 import sprite from "../../../../assets/sprite.svg";
 import s from "./style.module.css";
 import TodoStore from "../../../../store/todo";
 import { useState } from "react";
 
+interface IItem {
+  id: string;
+  isChecked: boolean;
+  title: string;
+  description: string;
+  project: string;
+}
+
 export const Trash = ({ closeTrash }) => {
   const [isInTrash, setIsInTrash] = useState(false);
   const [className, setClassName] = useState(s.wrapper);
   const [, dropRef] = useDrop({
     accept: "todo",
-    drop: (item) => {
+    drop: (item: IItem) => {
       TodoStore.addToTrash(item);
       TodoStore.deleteTodo(item.id, item.project);
       setIsInTrash(true);

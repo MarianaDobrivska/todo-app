@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./Form.module.css";
 import { memo, useState } from "react";
 import { nanoid } from "nanoid";

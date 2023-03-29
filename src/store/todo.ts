@@ -1,13 +1,14 @@
 import { makeAutoObservable } from "mobx";
+import { ITodo } from "../types/interface";
 
 const LS_KEY = "todo-items";
 const TRASH_KEY = "trash";
 const DONE_KEY = "done";
 
 class Store {
-  todos = JSON.parse(localStorage.getItem(LS_KEY)) ?? {};
-  deletedTodos = JSON.parse(localStorage.getItem(TRASH_KEY)) ?? [];
-  doneTodos = JSON.parse(localStorage.getItem(DONE_KEY)) ?? {};
+  todos = JSON.parse(localStorage.getItem(LS_KEY) as string) ?? {};
+  deletedTodos = JSON.parse(localStorage.getItem(TRASH_KEY) as string) ?? [];
+  doneTodos = JSON.parse(localStorage.getItem(DONE_KEY) as string) ?? {};
 
   constructor() {
     makeAutoObservable(this, {}, { deep: true });
@@ -30,12 +31,12 @@ class Store {
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
   }
 
-  addToTrash(todo) {
+  addToTrash(todo: ITodo) {
     this.deletedTodos.push(todo);
     localStorage.setItem(TRASH_KEY, JSON.stringify(this.deletedTodos));
   }
 
-  addProject(projectName) {
+  addProject(projectName: string) {
     this.todos = {
       ...this.todos,
       [projectName]: {},
@@ -43,14 +44,14 @@ class Store {
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
   }
 
-  deleteTodo(todoId, project) {
+  deleteTodo(todoId: string, project: string) {
     const newList = { ...this.todos };
     delete newList[project][todoId];
     this.todos = newList;
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
   }
 
-  updateTodoStatus(todoId, project) {
+  updateTodoStatus(todoId: string, project: string) {
     const currentProject = this.todos[project];
     this.todos = {
       ...this.todos,
@@ -65,7 +66,7 @@ class Store {
     localStorage.setItem(LS_KEY, JSON.stringify(this.todos));
   }
 
-  handleDoneTodos(todo, project) {
+  handleDoneTodos(todo: ITodo, project: string) {
     const currentProject = this.doneTodos[project];
     this.doneTodos = {
       ...this.doneTodos,

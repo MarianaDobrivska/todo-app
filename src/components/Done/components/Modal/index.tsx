@@ -1,9 +1,14 @@
+import React, { FC } from "react";
 import { ModalWrapper } from "../../../shared/Modal";
 import { ProgressBar } from "../ProgressBar";
 import TodoStore from "../../../../store/todo";
 import s from "./style.module.css";
 
-export const Modal = ({ close }) => {
+interface modalProp {
+  close: () => void;
+}
+
+export const Modal: FC<modalProp> = ({ close }) => {
   const doneCount = TodoStore.countOfCompleted;
   const totalCount = TodoStore.allTodosCount + doneCount;
   const remaining = totalCount - doneCount;

@@ -1,9 +1,10 @@
+import React from "react";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import s from "./Modal.module.css";
 import { BsFillXCircleFill } from "react-icons/bs";
 
-const modalRoot = document.querySelector("#modal-root");
+const modalRoot = document.querySelector("#modal-root") as Element;
 
 export const ModalWrapper = ({ children, close }) => {
   const handleModalClose = (e) => {

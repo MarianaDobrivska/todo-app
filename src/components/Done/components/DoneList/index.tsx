@@ -1,11 +1,11 @@
+import React from "react";
 import { nanoid } from "nanoid";
 import TodoStore from "../../../../store/todo";
 import s from "./style.module.css";
-import { List } from "./components/List";
+import { List } from "./List";
 
 export const DoneList = () => {
-  // const todos = TodoStore.doneTodos;
-  const todos = Object.keys(TodoStore.doneTodos);
+  const todos = Object.keys(TodoStore.doneTodos as string[]);
 
   return (
     <>

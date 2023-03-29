@@ -1,17 +1,18 @@
+import React from "react";
 import s from "./Modal.module.css";
 import TodoStore from "../../../../../store/todo";
 import { ModalWrapper } from "../../../../shared/Modal";
 
 export const Modal = ({ close }) => {
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (e.target !== e.currentTarget) return;
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const projectName = formData.get("project");
-    if (projectName.trim() === "") return;
-    TodoStore.addProject(projectName);
+    if (typeof projectName !== "string" || projectName.trim() === "") return;
+    TodoStore.addProject(projectName.toString());
     close();
-    e.target.reset();
+    e.currentTarget.reset();
   };
 
   return (

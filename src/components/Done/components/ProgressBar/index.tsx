@@ -1,10 +1,12 @@
+import React from "react";
 import TodoStore from "../../../../store/todo";
 import s from "./style.module.css";
 
 export const ProgressBar = () => {
   const doneCount = TodoStore.countOfCompleted;
   const totalCount = TodoStore.allTodosCount + doneCount;
-  const percentageComplete = (doneCount / totalCount) * 100;
+  const percentageCount = (doneCount / totalCount) * 100;
+  const percentage = `${percentageCount.toFixed(2)}%`;
   return (
     <div className={s.wrapper}>
       <label htmlFor="todo">Todos progress</label>
@@ -14,9 +16,9 @@ export const ProgressBar = () => {
         max={totalCount}
         value={doneCount}
       >
-        {percentageComplete.toFixed(2)}%
+        {percentage}
       </progress>
-      <p>{percentageComplete.toFixed(2)}% completed</p>
+      <p>{percentage} completed</p>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import clsx from "clsx";
 import sprite from "../../../../../assets/sprite.svg";
 import s from "./style.module.css";

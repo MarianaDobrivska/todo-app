@@ -1,9 +1,22 @@
+import React from "react";
 import { observer } from "mobx-react-lite";
 import s from "./TodoItem.module.css";
 import { BsFillXSquareFill } from "react-icons/bs";
 import TodoStore from "../../../../../../store/todo";
 import { useDrag } from "react-dnd";
 import { useEffect } from "react";
+
+type todoItemProps = {
+  id: string;
+  index: number;
+  title: string;
+  description: string;
+  isChecked: boolean;
+  setModalData: ({ title, description, isChecked }) => void;
+  open: () => void;
+  project: string;
+  openTrash: (arg: boolean) => void;
+};
 
 export const TodoItem = observer(
   ({
@@ -16,7 +29,7 @@ export const TodoItem = observer(
     open,
     project,
     openTrash,
-  }) => {
+  }: todoItemProps) => {
     const openModal = (e) => {
       if (
         e.target.type === "checkbox" ||
@@ -33,6 +46,7 @@ export const TodoItem = observer(
       item: { title, description, id, project, isChecked },
       isDragging: () => {
         openTrash(true);
+        return true;
       },
       end: () => {
         setTimeout(() => {

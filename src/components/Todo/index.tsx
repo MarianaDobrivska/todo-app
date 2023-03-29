@@ -3,6 +3,7 @@ import { Form } from "./components/Form";
 import { TodoList } from "./components/TodoList";
 import { ModalWrapper } from "../shared/Modal";
 import { Modal } from "./components/Modal";
+import React from "react";
 import { useModal } from "../../hooks";
 import TodoStore from "../../store/todo";
 import s from "./styles.module.css";

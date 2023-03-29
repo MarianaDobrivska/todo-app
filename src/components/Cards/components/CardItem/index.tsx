@@ -1,6 +1,13 @@
+import React from "react";
 import { useDrag } from "react-dnd";
 
-export const CardItem = ({ title, id, style }) => {
+type CardItemProps = {
+  title: string;
+  id: number;
+  style: string;
+};
+
+export const CardItem = ({ title, id, style }: CardItemProps) => {
   const [, dragRef] = useDrag({
     type: "card",
     item: { title, id },
@@ -14,10 +21,3 @@ export const CardItem = ({ title, id, style }) => {
     </li>
   );
 };
-
-// draggable={true}
-// onDragStart={(e) => dragStartHandler(e, card)}
-// onDragOver={(e) => dragOverHandler(e)}
-// onDragLeave={(e) => dragEndHandler(e)}
-// onDragEnd={(e) => dragEndHandler(e)}
-// onDrop={(e) => dropHandler(e, card)}
