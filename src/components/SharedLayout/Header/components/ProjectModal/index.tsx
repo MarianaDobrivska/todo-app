@@ -3,7 +3,11 @@ import s from "./Modal.module.css";
 import TodoStore from "../../../../../store/todo";
 import { ModalWrapper } from "../../../../shared/Modal";
 
-export const Modal = ({ close }) => {
+type modalProps = {
+  close: ()=> void
+}
+
+export const Modal = ({ close }: modalProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (e.target !== e.currentTarget) return;

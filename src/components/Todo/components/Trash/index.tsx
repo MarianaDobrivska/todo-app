@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import sprite from "../../../../assets/sprite.svg";
 import s from "./style.module.css";
 import TodoStore from "../../../../store/todo";
-import { useState } from "react";
 import { ITodo } from "../../../../types/interface";
 
-export const Trash = ({ closeTrash }) => {
+type trashProps = {
+  closeTrash: (arg: boolean) => void;
+};
+
+export const Trash = ({ closeTrash }: trashProps) => {
   const [isInTrash, setIsInTrash] = useState(false);
   const [className, setClassName] = useState(s.wrapper);
   const [, dropRef] = useDrop({

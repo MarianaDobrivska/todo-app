@@ -17,7 +17,7 @@ export const Modal: FC<modalProp> = ({ close }) => {
       <ul className={s.container}>
         <li className={s.thumb}>
           <p className={s.text}>
-            You've done: <span>{doneCount} todos</span>
+            You&aposve done: <span>{doneCount} todos</span>
           </p>
         </li>
         <li className={s.thumb}>

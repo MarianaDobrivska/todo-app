@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { CardItem } from "./components/CardItem";
 import s from "./style.module.css";
@@ -28,7 +27,6 @@ export const Cards = () => {
   const [{ isOver }, dropRef] = useDrop({
     accept: "card",
     drop: (item: ITrashItem) => {
-      console.log(item);
       setTrash(() => (!trash.includes(item) ? [...trash, item] : trash));
       const updatedCards = cards.filter((el) => item.id !== el.id);
       setCards(updatedCards);

@@ -1,14 +1,13 @@
+import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Form } from "./components/Form";
+import Form from "./components/Form";
 import { TodoList } from "./components/TodoList";
 import { ModalWrapper } from "../shared/Modal";
 import { Modal } from "./components/Modal";
-import React from "react";
 import { useModal } from "../../hooks";
 import TodoStore from "../../store/todo";
 import s from "./styles.module.css";
 import { Trash } from "./components/Trash";
-import { useState } from "react";
 
 export const Todo = observer(() => {
   const { isOpen, close, open, modalData, handleModalData } = useModal();

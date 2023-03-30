@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import s from "./TodoItem.module.css";
 import { BsFillXSquareFill } from "react-icons/bs";
 import TodoStore from "../../../../../../store/todo";
 import { useDrag } from "react-dnd";
-import { useEffect } from "react";
 
 type todoItemProps = {
   id: string;

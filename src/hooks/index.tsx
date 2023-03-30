@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FcInfo as Info,
   FcHighPriority as Error,
@@ -9,7 +8,13 @@ import {
 } from "react-icons/fc";
 import s from "./style.module.css";
 
-export const useModal = (data = null) => {
+const initialData = {
+  description: "",
+  title: "",
+  isChecked: true,
+};
+
+export const useModal = (data = initialData) => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalData, setModalData] = useState(data);
   const open = () => setIsOpen(true);
@@ -24,9 +29,10 @@ export const useNotify = () => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [notification, setNotification] = useState({ status: "", text: "" });
 
-  const getNotificationClassName = (status) => clsx(s.container, s[status]);
+  const getNotificationClassName = (status: string) =>
+    clsx(s.container, s[status]);
 
-  const handleIcon = (type) => {
+  const handleIcon = (type: string) => {
     switch (type) {
       case "Success":
         return <Success className={s.icon} />;

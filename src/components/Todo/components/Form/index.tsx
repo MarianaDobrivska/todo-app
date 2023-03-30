@@ -1,6 +1,5 @@
-import React from "react";
+import React, { memo, useState } from "react";
 import s from "./Form.module.css";
-import { memo, useState } from "react";
 import { nanoid } from "nanoid";
 import TodoStore from "../../../../store/todo";
 import { useNotify } from "../../../../hooks";
@@ -10,7 +9,7 @@ const initialClasses = {
   label: s.label,
 };
 
-export const Form = memo(() => {
+const Form = () => {
   const { isNotificationOpen, Notification, setNotify } = useNotify();
 
   const [classNameTitle, setClassNameTitle] = useState({ ...initialClasses });
@@ -90,4 +89,6 @@ export const Form = memo(() => {
       {isNotificationOpen && <Notification />}
     </form>
   );
-});
+};
+
+export default memo(Form);
